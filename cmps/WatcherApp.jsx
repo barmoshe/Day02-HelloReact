@@ -1,72 +1,57 @@
+import { utilService } from "../services/util.service.js";
 import { watcherService } from "../services/watcher.service.js";
 const { useState, useEffect } = React;
-
 export function WatcherApp() {
   const [watchers, setWatchers] = useState([]);
   const [selectedWatcher, setSelectedWatcher] = useState(null);
 
   useEffect(() => {
-    loadWatchers();
-  }, []);
+    fetchWatchers();
+  }, []); // Fetch watchers on component mount
 
-  const loadWatchers = async () => {
-    const data = await watcherService.query();
-    setWatchers(data);
+  const fetchWatchers = async () => {
+    try {
+      const fetchedWatchers = await watcherService.query(); // Retrieve watchers from the service
+      setWatchers(fetchedWatchers);
+    } catch (error) {
+      console.error("Error fetching watchers:", error);
+    }
   };
 
-  const removeWatcher = async (watcherId) => {
-    await watcherService.remove(watcherId);
-    setWatchers(watchers.filter((watcher) => watcher.id !== watcherId));
+  const handleRemoveWatcher = async (watcherId) => {
+    try {
+      await watcherService.remove(watcherId); // Remove watcher from the service
+      setWatchers(watchers.filter((watcher) => watcher.id !== watcherId)); // Update state
+    } catch (error) {
+      console.error("Error removing watcher:", error);
+    }
   };
-
-  const addWatcher = async () => {
-    const fullName = prompt("Enter full name:");
-    const movies = prompt("Enter movies (comma-separated):").split(",");
-    const newWatcher = {
-      id: `w${Date.now()}`,
-      fullName,
-      movies: movies.map((movie) => movie.trim()),
-    };
-    await watcherService.add(newWatcher);
-    setWatchers([...watchers, newWatcher]);
-  };
-
-  const handleWatcherSelect = (watcher) => {
-    setSelectedWatcher(watcher);
-  };
-
-  const closeModal = () => {
-    setSelectedWatcher(null);
+  const handleSelectWatcher = async (watcherId) => {
+    try {
+      const watcher = await watcherService.get(watcherId); // Retrieve watcher from the service
+      setSelectedWatcher(watcher); // Update state
+    } catch (error) {
+      console.error("Error selecting watcher:", error);
+    }
   };
 
   return (
-    <div>
-      <h1>Watcher App</h1>
-      <button onClick={addWatcher}>Add Watcher</button>
+    <section className="watcher-app">
+      <h2>Watchers</h2>
       <ul>
         {watchers.map((watcher) => (
-          <li key={watcher.id}>
-            {watcher.fullName} -{" "}
-            <button onClick={() => removeWatcher(watcher.id)}>Remove</button>
-            <button onClick={() => handleWatcherSelect(watcher)}>Select</button>
+          <li className="watcher-card" key={watcher.id}>
+            <img src={watcher.img} alt={watcher.fullname} />
+            <h3>{watcher.fullname}</h3>
+            <button onClick={() => handleRemoveWatcher(watcher.id)}>
+              Remove
+            </button>
+            <button onClick={() => handleSelectWatcher(watcher.id)}>
+              Select
+            </button>
           </li>
         ))}
       </ul>
-      {selectedWatcher && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeModal}>
-              &times;
-            </span>
-            <h2>{selectedWatcher.fullName}</h2>
-            <ul>
-              {selectedWatcher.movies.map((movie, index) => (
-                <li key={index}>{movie}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-    </div>
+    </section>
   );
 }

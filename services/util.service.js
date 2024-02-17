@@ -10,6 +10,7 @@ export const utilService = {
   openInNewTab,
   getCurrentSeason,
   getTime,
+  capitalizeFirstLetters,
 };
 
 function makeId(length = 6) {
@@ -158,4 +159,12 @@ function getCurrentSeason(date) {
   } else {
     return "winter";
   }
+}
+
+function capitalizeFirstLetters(str) {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+    .join(" ");
 }
