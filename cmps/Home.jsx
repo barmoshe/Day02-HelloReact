@@ -12,10 +12,15 @@ export function Home() {
     { type: "Parrot", count: 1 },
   ];
   return (
-    <main className="home">
+    <section className="home">
       <h1>
-        Welcome to the <span>React-Basics</span>
+        Welcome to the <span>React-Basics</span> App!
       </h1>
-    </main>
+      <p>
+        This app is a collection of simple components that demonstrate basic
+        React concepts. with the style of netflix
+      </p>
+      <img src="assets/img/Netflix.gif" alt="netflix" />
+    </section>
   );
 }

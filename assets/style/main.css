@@ -1,423 +1,524 @@
-
-body 
-{    background-color: #959494;
+* {
+  box-sizing: border-box;
 }
-  .app {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .main-layout {
-    display: flex;
-    flex-direction: column;
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #201f1f;
+  color: #fff;
+}
 
-  /* Header */
-  .app-header {
-    background-color: #111;
-    color: #fff;
-    padding: 20px 0;
-    border-radius: 10px 10px 0 0;
-  
-  
-  }
-  
-  /* Container */
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Navigation */
-  nav {
-    display: flex;
-  }
-  
-  .nav-button {
-    background-color: transparent;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    padding: 10px 20px;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-  
-  }
-  
-  .nav-button:hover {
-    color: #e50914; /* Netflix red */
-  }
-  
-  .nav-button:focus {
-    outline: none;
-  }
-  
-  .home {
-    padding: 20px;  
-    margin: 10px;
-   font-family: 'Courier New', Courier, monospace;
-  }
-  .home span {
-    color: #e50914;
-    font-size: 45px;
-  }
-  .home span:hover {
-    color: #6a0909;
-    transition: color 0.3s ease;
-  }
-  .animal-list {
-    margin: 20px;
-    
-  }
-  
-  .animal-list table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  
-  .animal-list thead {
-    background-color: #f44336;
-    color: #fff;
-  }
-  
-  .animal-list th, td {
-    padding: 12px 15px;
-    text-align: left;
-  }
-  
-  .animal-list th {
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  
-  .animal-list tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .animal-list button {
-    padding: 8px 12px;
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .animal-list button:hover {
-    background-color: #d32f2f;
-  }
-  
-  .season-clock {
-    background-color: lightblue; /* Light background color for light mode */
-    color: #fff; /* Light text color */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .season-clock.dark {
-    background-color: darkblue; /* Darker background color for dark mode */
-  }
-  
-  .season-clock h3 {
-    margin: 10px 0;
-    font-size: 1.2rem;
-  }
-  
-  .season-clock img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  
-  
-  /* Styles for the image */
-  .season-clock img {
-    display: block;
-    margin: 0 auto;
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
-  }
-  
-  /* Styles for CountDown component */
-  .count-down {
-    text-align: center;
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .count-down h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .count-down h3 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .count-down button {
-    background-color: #e50914;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .count-down button:hover {
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  gap: 20px;
+}
+
+header {
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+main {
+  display: grid;
+  gap: 6px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-header {
+  background-color: transparent;
+}
+
+.header-container {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+  gap: 6px;
+  justify-items: center;
+}
+
+.nav-button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 10px;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: red;
+}
+
+.home {
+  text-align: center;
+  padding: 50px;
+  background-color: #010101;
+}
+
+.home h1 {
+  font-size: 48px;
+  color: #fff; /* White text color */
+  margin-bottom: 30px; /* Add some bottom margin for spacing */
+}
+
+.home p {
+  font-size: 20px;
+  color: #aaa; /* Lighter text color */
+  margin-bottom: 40px; /* Add more bottom margin */
+}
+
+.home span {
+  font-family: "Courier New", monospace;
+  font-size: 43px;
+  color: #ff6347; /* Highlight color */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.home span:hover {
+  color: #00ff9f; /* Brighter highlight color on hover */
+}
+
+.season-clock {
+  background-color: lightblue; /* Light background color for light mode */
+  color: #fff; /* Light text color */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 45vw;
+}
+
+.season-clock.dark {
+  background-color: darkblue; /* Darker background color for dark mode */
+}
+
+.season-clock h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.season-clock img {
+  display: block;
+  margin: 0 auto;
+  width: 100px; /* Adjust as needed */
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.animal-list {
+  margin-top: 20px;
+}
+
+.animal-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #141414; /* Dark background similar to Netflix */
+  color: #fff; /* White text color */
+  font-family: Arial, sans-serif; /* Similar font to Netflix */
+  text-align: center;
+}
+
+.animal-list th,
+.animal-list td {
+  border: 1px solid #333; /* Darker border color */
+  padding: 15px; /* Increased padding for better spacing */
+}
+
+.animal-list th {
+  background-color: #1f1f1f; /* Darker background for headers */
+}
+
+.animal-list tbody tr:nth-child(even) {
+  background-color: #292929; /* Slightly lighter background for even rows */
+}
+
+.animal-list tbody tr:hover {
+  background-color: #484848; /* Darker background color on hover */
+}
+
+.animal-list button {
+  background-color: #e50914; /* Netflix red */
+  color: #fff; /* White text color */
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px; /* Increased padding */
+  font-size: 16px; /* Larger font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.animal-list button:hover {
+  background-color: #b20710; /* Darker red on hover */
+}
+.mouse-monitor {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  background-color: #000; /* Netflix's background color */
+  color: #fff; /* Netflix's text color */
+}
+.mouse-monitor.off {
+  opacity: 0.5; /* Example style for when the component is off */
+}
+
+.mouse-monitor p {
+  margin-bottom: 10px;
+}
+
+.mouse-monitor button {
+  background-color: #e50914; /* Netflix red */
+  color: #fff; /* White text color */
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px; /* Increased padding */
+  font-size: 16px; /* Larger font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.mouse-monitor button:hover {
+  background-color: #b20710; /* Darker red on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+.count-down {
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.count-down h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.count-down h3 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.count-down button {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.count-down button:hover {
+  background-color: #ff3f5e;
+}
+
+.count-down.warning {
+  background-color: #ff3f5e;
+  animation: pulse-warning 0.5s infinite alternate;
+}
+
+@keyframes pulse-warning {
+  from {
     background-color: #ff3f5e;
   }
-  
-  .count-down.warning {
-    background-color: #ff3f5e;
-    animation: pulse-warning 0.5s infinite alternate;
+  to {
+    background-color: #ff6f8d;
   }
-  
-  @keyframes pulse-warning {
-    from {
-      background-color: #ff3f5e;
-    }
-    to {
-      background-color: #ff6f8d;
-    }
-  }
-  .watcher-app {
-    padding: 20px;
-    
-  }
-  
-  /* Heading styling */
-  .watcher-app h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #c90811
-  }
-  
-  /* List styling */
-  .watcher-app ul {
-    list-style-type: none;
-    padding: 10px;
-    margin: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-  
-  /* Watcher card styling */
-  .watcher-card {
-    background-color: #000; /* Adjust background color as needed */
-    color: #fff; /* Adjust text color as needed */
-    width: calc(33.33% - 20px); /* Adjust width and margins as needed for grid layout */
-    margin-bottom: 20px;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 150px;
-    max-height:  min-content;
-   
-  }
-  
-  /* Watcher image styling */
-  .watcher-card img {
-    width: 100%;
-    margin-bottom: 5px;
-
-  }
-  
-  /* Watcher name styling */
-  .watcher-card h3 {
-    font-size: small;
-    margin-bottom: 10px;
-  }
-  
-  /* Button styling */
-  .watcher-card button {
-    background-color: #e50914; /* Netflix red color */
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-
-
-  }
-  .watcher-card button:first-of-type{
-    border-radius: 5px 0 0 5px;
-  }
-  .watcher-card button:last-of-type{
-    border-radius: 0 5px 5px 0;
-  }
-  .watcher-card button:hover {
-    background-color: #c90811; /* Darker shade of red on hover */
-  }
-
-  @media screen and (max-width: 768px) {
-    .watcher-app{
-      padding: 10px;
-    }
-
-    .watcher-card {
-      width: calc(50% - 200px);
-    }
-
-    
-  }
-  
-  
-  .mouse-monitor {
-    background-color: #111;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .mouse-monitor p {
-    margin: 5px 0;
-  }
-  
-  .mouse-monitor button {
-    background-color: #e50914; /* Netflix red */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .mouse-monitor button:hover {
-    background-color: #c90811; /* Darker shade of red on hover */
-  }
-  
-  .mouse-monitor.off {
-    opacity: 0.5; /* Lower opacity when turned off */
-  }
-
-
+}
 .generic-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Set z-index to be on top of everything */
 }
 
 .modal-content {
-  background-color: #464646; /* Dark background color */
-  color: #fff; /* White text color */
+  background-color: #333; /* Dark background color for modal content */
   padding: 20px;
   border-radius: 10px;
-  max-width: 400px; /* Adjust as needed */
-  width: 90%;
-  text-align: center;
+  max-width: 80%; /* Limit width of modal content */
+  position: relative; /* Set position to relative for absolute positioning */
 }
 
 .modal-content h2 {
   font-size: 24px;
+  color: #fff; /* White text color */
   margin-bottom: 20px;
 }
 
-.modal-content button {
-  background-color: #e50914; /* Netflix red */
+.modal-content button.close-btn {
+  background-color: transparent;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.modal-content button:hover {
-  background-color: #c90811; /* Darker shade of red on hover */
+.modal-content button.close-btn:hover {
+  color: #ff6347; /* Change text color on hover */
 }
 
+.modal-content button.close-btn:focus {
+  outline: none; /* Remove focus outline */
+}
 .watcher-details {
-  background-color: #141414; /* Dark background color */
-  color: #fff; /* Text color */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-  max-width: 600px; /* Adjust as needed */
-
+  padding: 10px;
+  width: 30vw; /* Set width of the component */
 }
 
 .watcher-details img {
-  max-width: 200px; /* Limit image width */
+  max-width: 6vw; /* Adjust image width */
   height: auto;
-  border-radius: 5px; /* Rounded corners for the image */
-  margin-bottom: 10px;
+  border-radius: 2px; /* Add border radius for rounded corners */
 }
 
 .watcher-details h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 12px; /* Adjust font size for watcher name */
+  color: #fff; /* White text color */
 }
 
-.watcher-details input[type="text"] {
+.watcher-details input {
   width: 100%;
-  padding: 8px;
-  font-size: 18px;
-  border: none;
+  padding: 10px; /* Adjust padding for input field */
+  font-size: 16px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #202020; /* Dark input background */
-  color: #fff; /* Text color */
+  margin-top: 10px; /* Add margin on top of input field */
+  box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
 .watcher-details .movies-list {
+  text-align: left;
   margin-top: 20px;
+  overflow-y: auto;
+  max-height: 20vh;
 }
 
 .watcher-details .movies-list h4 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  color: #fff;
 }
 
-.watcher-details .movies-list ul {
-  padding: 0;
-  margin: 0;
+.watcher-details .movies-list table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse border spacing */
+  margin-top: 20px; /* Add margin on top of the table */
 }
 
-.watcher-details .movies-list li {
-  font-size: 16px;
-  margin-bottom: 5px;
+.watcher-details .movies-list th,
+.watcher-details .movies-list td {
+  padding: 12px; /* Increase padding for better spacing */
+  border-bottom: 1px solid #ccc; /* Add bottom border for table cells */
+  text-align: left; /* Align text to the left */
 }
 
-.watcher-details button {
-  background-color: #e50914; /* Netflix red */
+.watcher-details .movies-list th {
+  font-weight: bold;
+  color: #fff; /* White text color */
+  background-color: #333; /* Dark background color for header */
+}
+
+.watcher-details .movies-list td {
+  color: #fff; /* White text color */
+  background-color: #444; /* Slightly lighter background color for cells */
+}
+
+.watcher-details .movies-list tr:nth-child(even) {
+  background-color: #555; /* Alternate row background color */
+}
+
+.watcher-details .movies-list tr:hover {
+  background-color: #666; /* Hover background color */
+}
+
+.watcher-details .movies-list button {
+  background-color: #e50914; /* Netflix red color */
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
+.watcher-details .movies-list button:hover {
+  background-color: #ff0a16; /* Lighter red color on hover */
+}
+.watcher-details .movies-list button {
+  background-color: #e50914; /* Netflix red color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.watcher-details .movies-list button:hover {
+  background-color: #ff0a16; /* Lighter red color on hover */
+}
+
+.watcher-details button {
+  background-color: #e50914; /* Netflix red color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Add margin on top of button */
+}
+
 .watcher-details button:hover {
-  background-color: #c90811; /* Darker shade of red on hover */
+  background-color: #ff0a16; /* Lighter red color on hover */
+}
+
+.watcher-app {
+  text-align: center;
+  padding: 20px;
+}
+
+.watcher-app h2 {
+  font-size: 36px; /* Larger font size */
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.watcher-app ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.watcher-app .watcher-card {
+  margin: 10px;
+  padding: 20px;
+  background-color: #000; /* Black background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Shadow effect */
+  text-align: center;
+  width: 200px; /* Set card width */
+}
+.watcher-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Larger shadow on hover */
+  scale: 1.0075; /* Slightly larger size on hover */
+}
+
+.watcher-app .watcher-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rounded corners for images */
+}
+
+.watcher-app .watcher-card h3 {
+  font-size: 24px; /* Larger font size for names */
+  color: #fff;
+  margin: 20px 0; /* Adjust margin */
+}
+
+.watcher-app .watcher-card button {
+  background-color: #e50914; /* Netflix red color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Larger font size for buttons */
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.watcher-app .watcher-card button:hover {
+  background-color: #ff0a16; /* Lighter red color on hover */
+}
+
+.watcher-app .actions {
+  margin-top: 20px;
+}
+
+.watcher-app .add-watcher {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.watcher-app .add-watcher:hover {
+  background-color: #ff0a16;
+}
+.add-watcher-form {
+  text-align: center;
+  padding: 20px;
+}
+
+.add-watcher-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff; /* White text color */
+}
+
+.add-watcher-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px; /* Add some margin on top of input fields */
+}
+
+.add-watcher-form button {
+  background-color: #e50914; /* Netflix red color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin on top of the button */
+}
+
+.add-watcher-form button:hover {
+  background-color: #ff0a16; /* Lighter red color on hover */
 }

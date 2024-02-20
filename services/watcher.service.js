@@ -9,6 +9,8 @@ export const watcherService = {
   get,
   remove,
   save,
+  saveNew,
+  createWatcerEntity,
 };
 
 //query function - returns all watchers
@@ -32,12 +34,19 @@ function remove(watcherId) {
 
 //save function - saves a watcher
 function save(watcher) {
+  return storageService.put(WATCHER_KEY, watcher);
+}
+function saveNew(watcher) {
+  return storageService.post(WATCHER_KEY, watcher);
+}
+function createWatcerEntity(fullname, movies) {
+  const watcher = {
+    id: utilService.makeId(),
+    fullname,
+    movies,
+  };
   watcher.img = `https://robohash.org/${watcher.id}`;
-  if (watcher.id) {
-    return storageService.put(WATCHER_KEY, watcher);
-  } else {
-    return storageService.post(WATCHER_KEY, watcher);
-  }
+  return watcher;
 }
 
 function _createWatchers() {
@@ -46,23 +55,31 @@ function _createWatchers() {
     watchers = [
       {
         id: utilService.makeId(),
-        fullname: "jerry smith",
-        movies: ["Rambo", "Avatar"],
+        fullname: "afik papo",
+        movies: ["buko", "Haram"],
       },
       {
         id: utilService.makeId(),
-        fullname: "rick sanchez",
+        fullname: "itay shechter",
         movies: ["Rambo", "Rocky"],
       },
       {
         id: utilService.makeId(),
-        fullname: "Bojack Horseman",
+        fullname: "neoray segev",
         movies: ["Rambo", "Rocky", "Avatar"],
       },
       {
         id: utilService.makeId(),
-        fullname: "homer simpson",
-        movies: ["Rambo", "Rocky", "Avatar"],
+        fullname: "ofir ben eli",
+        movies: [
+          "Rambo",
+          "Rocky",
+          "Avatar",
+          "The Matrix",
+          "The Godfather",
+          "The Shawshank Redemption",
+          "The Dark Knight",
+        ],
       },
     ];
     watchers = watchers.map((watcher) => {

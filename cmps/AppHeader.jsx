@@ -3,8 +3,8 @@ export function AppHeader({ setPage }) {
     setPage(pageName);
   };
   return (
-    <header className="app-header">
-      <section className="header-container">
+    <section className="app-header">
+      <div className="header-container">
         <nav>
           <button className="nav-button" onClick={() => handleNavClick("Home")}>
             Home
@@ -46,7 +46,7 @@ export function AppHeader({ setPage }) {
             Watcher App
           </button>
         </nav>
-      </section>
-    </header>
+      </div>
+    </section>
   );
 }

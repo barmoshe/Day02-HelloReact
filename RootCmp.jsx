@@ -1,4 +1,5 @@
 const { useState, useEffect } = React;
+
 import { AnimalList } from "cmps/animalList.jsx";
 import { CountDown } from "cmps/countDown.jsx";
 import { Home } from "cmps/home.jsx";
@@ -6,6 +7,7 @@ import { MouseMonitor } from "cmps/mouseMonitor.jsx";
 import { SeasonClock } from "cmps/seasonClock.jsx";
 import { WatcherApp } from "cmps/watcherApp.jsx";
 import { AppHeader } from "cmps/AppHeader.jsx";
+
 export function RootCmp() {
   const [page, setPage] = useState("Home");
   const animalInfos = [
@@ -14,7 +16,6 @@ export function RootCmp() {
     { type: "Parrot", count: 1 },
   ];
 
-  // Function to render the selected component based on the page state
   const renderComponent = () => {
     switch (page) {
       case "Home":
@@ -24,10 +25,17 @@ export function RootCmp() {
       case "SeasonClock":
         return <SeasonClock />;
       case "CountDown":
-        return <CountDown startFrom={10} onDone={() => alert("Time's up!")} />;
+        return (
+          <CountDown
+            key={1}
+            startFrom={10}
+            onDone={() => alert("Time's up!")}
+          />
+        );
       case "countDownToTime":
         return (
           <CountDown
+            key={2}
             startFrom={null}
             toTime={Date.now() + 1000 * 1000}
             onDone={() => {
@@ -45,9 +53,12 @@ export function RootCmp() {
   };
 
   return (
-    <div className="app main-layout">
-      <AppHeader setPage={setPage} />
-      {renderComponent()}
+    <div className="app">
+      <header>
+        <AppHeader setPage={setPage} />
+      </header>
+      <main>{renderComponent()}</main>
+      <footer>{"CA  =>  React-Basics"} </footer>
     </div>
   );
 }
