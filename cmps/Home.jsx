@@ -20,7 +20,7 @@ export function Home() {
         This app is a collection of simple components that demonstrate basic
         React concepts. with the style of netflix
       </p>
-      <img src="assets/img/Netflix.gif" alt="netflix" />
+      <img src="../assets/img/Netflix.gif" alt="netflix" />
     </section>
   );
 }

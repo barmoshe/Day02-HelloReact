@@ -42,7 +42,7 @@ export function SeasonClock() {
       </h3>
 
       <img
-        src={`assets/img/${getCurrentSeason()}.png`}
+        src={`../assets/img/${getCurrentSeason()}.png`}
         alt={getCurrentSeason(date)}
       />
       <h3>{utilService.getDayName(date)}</h3>
