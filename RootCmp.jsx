@@ -1,12 +1,12 @@
 const { useState, useEffect } = React;
 
-import { AnimalList } from "cmps/animalList.jsx";
-import { CountDown } from "cmps/countDown.jsx";
-import { Home } from "cmps/home.jsx";
-import { MouseMonitor } from "cmps/mouseMonitor.jsx";
-import { SeasonClock } from "cmps/seasonClock.jsx";
-import { WatcherApp } from "cmps/watcherApp.jsx";
-import { AppHeader } from "cmps/AppHeader.jsx";
+import { AnimalList } from "./cmps/animalList.jsx";
+import { CountDown } from "./cmps/countDown.jsx";
+import { Home } from "./cmps/home.jsx";
+import { MouseMonitor } from "./cmps/mouseMonitor.jsx";
+import { SeasonClock } from "./cmps/seasonClock.jsx";
+import { WatcherApp } from "./cmps/watcherApp.jsx";
+import { AppHeader } from "./cmps/AppHeader.jsx";
 
 export function RootCmp() {
   const [page, setPage] = useState("Home");
